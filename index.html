@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ROKNREDMAN 🌶️ Jalapeño Fans</title>
+<style>
+  :root { --red:#d7263d; --green:#2e8b3d; --dark:#1a0b0b; --cream:#fff4e0; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:"Trebuchet MS",Verdana,sans-serif; background:var(--dark); color:var(--cream); }
+  header { background:linear-gradient(135deg,var(--red),#ff7b00); padding:14px 24px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:5; box-shadow:0 2px 12px #000a; }
+  .logo { font-weight:900; font-size:1.4rem; letter-spacing:1px; }
+  .logo span { color:var(--green); background:var(--cream); padding:0 6px; border-radius:6px; }
+  .banner { height:220px; background:radial-gradient(circle at 30% 40%,#ff7b00,var(--red) 50%,#4a0000); display:flex; align-items:center; justify-content:center; font-size:7rem; }
+  .profile { max-width:760px; margin:-70px auto 0; text-align:center; padding:0 16px; }
+  .avatar { width:140px; height:140px; border-radius:50%; background:var(--green); border:6px solid var(--dark); display:inline-flex; align-items:center; justify-content:center; font-size:4.5rem; box-shadow:0 0 0 4px var(--red); }
+  h1 { margin:10px 0 0; font-size:2.4rem; letter-spacing:2px; }
+  .verified { color:#4fc3f7; font-size:1rem; }
+  .handle { opacity:.7; }
+  .bio { margin:14px auto; max-width:560px; line-height:1.5; }
+  .stats { display:flex; justify-content:center; gap:28px; margin:18px 0; flex-wrap:wrap; }
+  .stats div { font-size:.85rem; opacity:.85; } .stats b { display:block; font-size:1.5rem; color:#ffb347; }
+  .sub { display:block; width:100%; max-width:420px; margin:10px auto; padding:16px; border:0; border-radius:40px; font-size:1.1rem; font-weight:900; color:#fff; background:var(--red); cursor:pointer; transition:transform .15s; }
+  .sub:hover { transform:scale(1.04) rotate(-1deg); background:#ff3b50; }
+  .sub.alt { background:var(--green); }
+  .tiers { max-width:760px; margin:30px auto; padding:0 16px; display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); }
+  .tier { background:#2b1313; border:2px solid var(--red); border-radius:16px; padding:18px; text-align:center; }
+  .tier h3 { margin:0 0 6px; } .price { font-size:1.8rem; color:#ffb347; font-weight:900; }
+  .tier ul { text-align:left; padding-left:18px; font-size:.9rem; }
+  .feed { max-width:560px; margin:30px auto; padding:0 16px; }
+  .post { background:#2b1313; border-radius:16px; margin-bottom:22px; overflow:hidden; }
+  .post-head { padding:12px 16px; display:flex; gap:10px; align-items:center; font-weight:bold; }
+  .post-head small { opacity:.6; font-weight:normal; }
+  .pic { height:260px; display:flex; align-items:center; justify-content:center; font-size:6rem; position:relative; }
+  .locked { filter:blur(9px); }
+  .lock-msg { position:absolute; font-size:1.1rem; font-weight:900; background:#000b; padding:10px 18px; border-radius:30px; }
+  .post p { padding:0 16px 12px; margin:10px 0; }
+  .actions { padding:0 16px 14px; opacity:.8; font-size:.9rem; }
+  .tip { cursor:pointer; color:#ffb347; font-weight:bold; }
+  .meter { height:14px; background:#000; border-radius:8px; overflow:hidden; margin:8px 0; }
+  .meter i { display:block; height:100%; width:0; background:linear-gradient(90deg,var(--green),#ffd400,#ff7b00,var(--red)); transition:width 1s; }
+  footer { text-align:center; padding:30px 16px 50px; font-size:.75rem; opacity:.6; max-width:640px; margin:auto; }
+  #toast { position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(120px); background:var(--green); padding:12px 22px; border-radius:30px; font-weight:bold; transition:transform .3s; z-index:10; }
+  #toast.show { transform:translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Jalapeño<span>Fans</span> 🌶️</div>
+  <div>🔔 Heat Alerts: ON</div>
+</header>
+
+<div class="banner">🔥🌶️🔥</div>
+
+<section class="profile">
+  <div class="avatar">🎸</div>
+  <h1>ROKNREDMAN <span class="verified">✔ Certified Spicy</span></h1>
+  <div class="handle">@roknredman · Last seen: hot</div>
+  <p class="bio">Rocking. Reddening. Occasionally eating peppers I absolutely should not. Subscribe for exclusive content: <i>fully clothed, mildly sweaty</i>, and extremely loud opinions about salsa. 🤘</p>
+  <div class="stats">
+    <div><b>420</b>Spicy Posts</div>
+    <div><b>69K</b>Heat Seekers</div>
+    <div><b>11/10</b>Scoville Rating</div>
+    <div><b>0</b>Regrets</div>
+  </div>
+  <div style="text-align:left;font-size:.85rem">Today's Spice Level:</div>
+  <div class="meter"><i id="meter"></i></div>
+  <button class="sub" onclick="toast('Welcome to the heat! 🌶️ (no card charged, relax)')">SUBSCRIBE · $0.00 / month (first month free!)</button>
+  <button class="sub alt" onclick="heat()">🔥 Turn Up The Heat</button>
+</section>
+
+<section class="tiers">
+  <div class="tier"><h3>🫑 Bell Pepper</h3><div class="price">Free</div><ul><li>Mild vibes</li><li>Guitar face pics</li><li>Zero heat</li></ul></div>
+  <div class="tier"><h3>🌶️ Jalapeño</h3><div class="price">$4.20</div><ul><li>Behind-the-scenes riffs</li><li>Red-shirt-of-the-month</li><li>Medium heat</li></ul></div>
+  <div class="tier"><h3>☠️ Ghost Pepper</h3><div class="price">$69.00</div><ul><li>Personal air-guitar solo</li><li>Cries on camera (from peppers)</li><li>Sign a waiver</li></ul></div>
+</section>
+
+<section class="feed">
+  <div class="post">
+    <div class="post-head">🎸 ROKNREDMAN <small>2 hrs ago</small></div>
+    <div class="pic" style="background:#7a1020">🎸😎</div>
+    <p>New riff just dropped. Fully clothed. Absolutely scandalous. 🔥</p>
+    <div class="actions">❤️ 12.3K · 💬 4 · <span class="tip" onclick="toast('Tip sent: 1 imaginary jalapeño 🌶️')">💸 Tip a pepper</span></div>
+  </div>
+  <div class="post">
+    <div class="post-head">🎸 ROKNREDMAN <small>Yesterday</small></div>
+    <div class="pic" style="background:#2e5e34"><span class="locked">🔴👕🔴</span><span class="lock-msg">🔒 Subscribe to see a red shirt</span></div>
+    <p>Premium content: me, in a red shirt. Yes, THAT red shirt. 👀</p>
+    <div class="actions">❤️ 9.9K · 💬 69 · <span class="tip" onclick="toast('Unlocked! It was just a red shirt. 👕')">🔓 Unlock $0.00</span></div>
+  </div>
+  <div class="post">
+    <div class="post-head">🎸 ROKNREDMAN <small>3 days ago</small></div>
+    <div class="pic" style="background:#8a4b00">🌶️😭🥵</div>
+    <p>Ate a ghost pepper for the Ghost Tier. Tears were shed. Milk was consumed. Dignity was not retained. 🥛</p>
+    <div class="actions">❤️ 42K · 💬 1.2K · <span class="tip" onclick="toast('Tip sent: 1 glass of milk 🥛')">💸 Tip some milk</span></div>
+  </div>
+</section>
+
+<footer>
+  JalapeñoFans is a parody. No nudity, no spice-related lawsuits, just a very red man and a lot of peppers. Made with love for ROKNREDMAN. Please drink water responsibly. 🌶️
+</footer>
+
+<div id="toast"></div>
+<script>
+  const m = document.getElementById('meter');
+  setTimeout(() => m.style.width = '85%', 300);
+  let level = 85;
+  function heat() {
+    level = Math.min(100, level + 5);
+    m.style.width = level + '%';
+    toast(level >= 100 ? '🚨 MAXIMUM HEAT. Fetch milk. 🥛' : '🔥 Heat at ' + level + '%');
+  }
+  function toast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 2200);
+  }
+</script>
+</body>
+</html>
